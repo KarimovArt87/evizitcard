@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мобильная версия YouTube</title>
-    <script type="text/javascript">
-        // Функция для перенаправления на мобильную версию YouTube
-        function redirectToMobileYouTube() {
-            // Проверяем, является ли устройство мобильным
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                window.location.href = "https://m.youtube.com";
-            } else {
-                alert("Вы используете устройство, которое не является мобильным. Мобильная версия YouTube может не отображаться корректно.");
-                window.location.href = "https://m.youtube.com";
-            }
-        }
-    </script>
+    <title>Telegram Mini App</title>
 </head>
-<body onload="redirectToMobileYouTube()">
-    <h1>Перенаправление на мобильную версию YouTube...</h1>
+<body>
+    <button id="sendDataButton">Получить данные</button>
+
+    <script>
+        document.getElementById('sendDataButton').addEventListener('click', function () {
+            const data = { key: 'value' };  // Ваши данные
+            Telegram.WebApp.sendData(JSON.stringify(data));
+            Telegram.WebApp.close();
+        });
+    </script>
 </body>
 </html>
