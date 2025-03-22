@@ -1,224 +1,145 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме - Иванов Иван Иванович</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.8em;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 5px;
-            margin-top: 20px;
-        }
-        h3 {
-            font-size: 1.4em;
-            margin-top: 15px;
-        }
-        p {
-            margin: 5px 0;
-        }
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        ul li {
-            margin-bottom: 5px;
-        }
-        .contact-info {
-            margin-bottom: 20px;
-        }
-        .contact-info a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin-bottom: 20px;
-            page-break-inside: avoid; /* Предотвращает разрыв секций на страницах */
-        }
-        .section:last-child {
-            margin-bottom: 0;
-        }
-        .download-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .download-btn:hover {
-            background-color: #2980b9;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Создание резюме онлайн</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: #f4f4f9;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .left-panel {
+      width: 30%;
+      padding: 20px;
+      background: #f9f9f9;
+      border-right: 1px solid #ddd;
+    }
+    .left-panel input, .left-panel textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .left-panel label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .preview {
+      width: 70%;
+      padding: 20px;
+    }
+    .resume {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .resume h1 {
+      margin-top: 0;
+    }
+    .download-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .download-btn:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <div class="container" id="resume">
-        <header>
-            <h1>Иванов Иван Иванович</h1>
-            <p><strong>Операционный директор (COO)</strong></p>
-            <div class="contact-info">
-                <p>📞 +7 (999) 123-45-67 | 📧 <a href="mailto:ivanov@email.com">ivanov@email.com</a></p>
-                <p>🌐 <a href="https://www.linkedin.com/in/ivanov" target="_blank">LinkedIn</a> | 📍 Москва (готов к удаленной работе)</p>
-            </div>
-        </header>
+  <div class="container">
+    <!-- Левая панель для ввода данных -->
+    <div class="left-panel">
+      <h2>Создайте резюме</h2>
+      <label for="name">ФИО:</label>
+      <input type="text" id="name" placeholder="Иванов Иван Иванович">
 
-        <section class="section">
-            <h2>Ключевые компетенции</h2>
-            <ul>
-                <li>Управление операционной деятельностью компаний (онлайн-образование, инфобизнес).</li>
-                <li>Стратегическое планирование и реализация бизнес-стратегий.</li>
-                <li>Управление командами (более 50 человек).</li>
-                <li>Оптимизация бизнес-процессов и повышение операционной эффективности.</li>
-                <li>Управление бюджетами (маркетинг, операционные расходы).</li>
-                <li>Анализ финансовой отчетности (P&L, управленческий учет).</li>
-                <li>Развитие и масштабирование бизнеса.</li>
-                <li>Навыки интернет-маркетинга (SMM, контент-маркетинг, performance-маркетинг).</li>
-            </ul>
-        </section>
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="example@mail.com">
 
-        <section class="section">
-            <h2>Опыт работы</h2>
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="phone" placeholder="+7 (999) 999-99-99">
 
-            <h3>Операционный директор</h3>
-            <p><strong>Компания "Онлайн-Академия" (онлайн-образование)</strong></p>
-            <p><em>Март 2020 – настоящее время</em></p>
-            <ul>
-                <li>Управление операционной деятельностью компании с годовым оборотом 500 млн рублей.</li>
-                <li>Рост выручки на 40% за счет оптимизации бизнес-процессов и внедрения новых продуктов.</li>
-                <li>Управление командой из 60 человек (отделы маркетинга, продаж, продукта, поддержки).</li>
-                <li>Контроль и исполнение бюджета на маркетинг (5 млн рублей в месяц).</li>
-                <li>Внедрение системы управленческой отчетности, что позволило сократить время подготовки отчетов на 30%.</li>
-                <li>Реализация стратегии масштабирования бизнеса на рынки СНГ.</li>
-            </ul>
+      <label for="experience">Опыт работы:</label>
+      <textarea id="experience" rows="5" placeholder="Опишите ваш опыт работы"></textarea>
 
-            <h3>Руководитель проектов</h3>
-            <p><strong>Компания "Инфобизнес Групп" (инфобизнес)</strong></p>
-            <p><em>Июнь 2017 – Февраль 2020</em></p>
-            <ul>
-                <li>Управление проектами с бюджетом до 3 млн рублей в месяц.</li>
-                <li>Запуск и продвижение образовательных продуктов, которые принесли 200 млн рублей выручки за 2 года.</li>
-                <li>Оптимизация процессов в отделе маркетинга, что привело к снижению CAC на 25%.</li>
-                <li>Управление командой из 30 человек (маркетинг, продажи, производство контента).</li>
-                <li>Внедрение CRM-системы, что повысило конверсию лидов на 15%.</li>
-            </ul>
-        </section>
+      <label for="education">Образование:</label>
+      <textarea id="education" rows="5" placeholder="Опишите ваше образование"></textarea>
 
-        <section class="section">
-            <h2>Образование</h2>
-            <p><strong>Московский Государственный Университет (МГУ)</strong></p>
-            <p><em>Факультет экономики, бакалавр</em></p>
-            <p><em>2011 – 2015</em></p>
+      <label for="skills">Навыки:</label>
+      <textarea id="skills" rows="5" placeholder="Перечислите ваши навыки"></textarea>
 
-            <h3>Курсы и сертификации</h3>
-            <ul>
-                <li>"Стратегическое управление бизнесом" (Coursera, 2021).</li>
-                <li>"Финансовый менеджмент и управленческий учет" (Skillbox, 2020).</li>
-                <li>"Интернет-маркетинг: от стратегии до реализации" (Нетология, 2019).</li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2>Достижения</h2>
-            <ul>
-                <li>Увеличение прибыли компании на 50% за счет внедрения новых продуктов и оптимизации процессов.</li>
-                <li>Успешное масштабирование бизнеса на рынки СНГ с ростом выручки на 25%.</li>
-                <li>Снижение операционных издержек на 20% за счет автоматизации процессов.</li>
-                <li>Управление маркетинговым бюджетом в 60 млн рублей в год с ROI 150%.</li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2>Навыки</h2>
-            <ul>
-                <li>Управление командами (50+ человек).</li>
-                <li>Финансовый анализ и отчетность (P&L, бюджетирование).</li>
-                <li>Оптимизация бизнес-процессов.</li>
-                <li>Интернет-маркетинг (SMM, контент-маркетинг, performance-маркетинг).</li>
-                <li>Стратегическое планирование и реализация.</li>
-                <li>Управление проектами (Agile, Scrum).</li>
-                <li>Владение инструментами: Excel, Google Analytics, Tableau, CRM (Bitrix24, AmoCRM).</li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2>Личные качества</h2>
-            <ul>
-                <li>Лидерские качества и умение вдохновлять команду.</li>
-                <li>Стратегическое мышление и ориентация на результат.</li>
-                <li>Радикальная честность и осознанность в принятии решений.</li>
-                <li>Готовность к постоянному развитию и обучению.</li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2>Дополнительная информация</h2>
-            <ul>
-                <li>Готовность к командировкам.</li>
-                <li>Опыт работы в удаленном формате.</li>
-                <li>Участие в предпринимательских сообществах и образовательных проектах.</li>
-                <li>Владение английским языком (Intermediate).</li>
-            </ul>
-        </section>
-
-        <button class="download-btn" onclick="downloadPDF()">Скачать резюме в PDF</button>
+      <button class="download-btn" onclick="downloadResume()">Скачать резюме (PDF)</button>
     </div>
 
-    <script>
-        function downloadPDF() {
-            const element = document.getElementById('resume');
-            const options = {
-                margin: [10, 10, 10, 10], // Отступы
-                filename: 'resume.pdf', // Имя файла
-                image: { type: 'jpeg', quality: 0.98 }, // Качество изображения
-                html2canvas: { 
-                    scale: 2, // Масштабирование
-                    logging: true, // Логирование для отладки
-                    useCORS: true, // Разрешить кросс-доменные запросы
-                    allowTaint: true, // Разрешить "загрязнение" canvas
-                },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'portrait', // Ориентация страницы
-                },
-                pagebreak: { 
-                    mode: 'avoid-all', // Избегать разрывов внутри элементов
-                    before: '.section', // Разрывать перед каждой секцией
-                },
-            };
+    <!-- Правая панель для предпросмотра резюме -->
+    <div class="preview">
+      <h2>Предпросмотр резюме</h2>
+      <div class="resume" id="resume-preview">
+        <h1 id="preview-name">ФИО</h1>
+        <p><strong>Email:</strong> <span id="preview-email">example@mail.com</span></p>
+        <p><strong>Телефон:</strong> <span id="preview-phone">+7 (999) 999-99-99</span></p>
+        <h3>Опыт работы</h3>
+        <p id="preview-experience">Опыт работы</p>
+        <h3>Образование</h3>
+        <p id="preview-education">Образование</p>
+        <h3>Навыки</h3>
+        <p id="preview-skills">Навыки</p>
+      </div>
+    </div>
+  </div>
 
-            // Генерация PDF
-            html2pdf().set(options).from(element).save();
-        }
-    </script>
+  <script>
+    // Функция для обновления предпросмотра
+    function updatePreview() {
+      document.getElementById('preview-name').innerText = document.getElementById('name').value;
+      document.getElementById('preview-email').innerText = document.getElementById('email').value;
+      document.getElementById('preview-phone').innerText = document.getElementById('phone').value;
+      document.getElementById('preview-experience').innerText = document.getElementById('experience').value;
+      document.getElementById('preview-education').innerText = document.getElementById('education').value;
+      document.getElementById('preview-skills').innerText = document.getElementById('skills').value;
+    }
+
+    // Обновляем предпросмотр при изменении полей
+    document.querySelectorAll('.left-panel input, .left-panel textarea').forEach(element => {
+      element.addEventListener('input', updatePreview);
+    });
+
+    // Функция для скачивания резюме в PDF
+    function downloadResume() {
+      const element = document.getElementById('resume-preview');
+      html2pdf(element, {
+        margin: 10,
+        filename: 'resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      });
+    }
+  </script>
+  <!-- Подключаем библиотеку html2pdf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>
