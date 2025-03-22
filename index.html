@@ -59,6 +59,7 @@
         }
         .section {
             margin-bottom: 20px;
+            page-break-inside: avoid; /* Предотвращает разрыв секций на страницах */
         }
         .section:last-child {
             margin-bottom: 0;
@@ -77,8 +78,7 @@
             background-color: #2980b9;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <div class="container" id="resume">
@@ -194,22 +194,30 @@
 
     <script>
         function downloadPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4');
+            const element = document.getElementById('resume');
+            const options = {
+                margin: [10, 10, 10, 10], // Отступы
+                filename: 'resume.pdf', // Имя файла
+                image: { type: 'jpeg', quality: 0.98 }, // Качество изображения
+                html2canvas: { 
+                    scale: 2, // Масштабирование
+                    logging: true, // Логирование для отладки
+                    useCORS: true, // Разрешить кросс-доменные запросы
+                    allowTaint: true, // Разрешить "загрязнение" canvas
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait', // Ориентация страницы
+                },
+                pagebreak: { 
+                    mode: 'avoid-all', // Избегать разрывов внутри элементов
+                    before: '.section', // Разрывать перед каждой секцией
+                },
+            };
 
-            // Захват HTML-контента и преобразование в изображение
-            html2canvas(document.getElementById('resume'), {
-                scale: 2, // Увеличиваем качество изображения
-                useCORS: true,
-            }).then((canvas) => {
-                const imgData = canvas.toDataURL('image/png');
-                const imgWidth = 210; // Ширина A4 в мм
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-                // Добавление изображения в PDF
-                doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-                doc.save('resume.pdf'); // Сохранение файла
-            });
+            // Генерация PDF
+            html2pdf().set(options).from(element).save();
         }
     </script>
 </body>
